@@ -3,7 +3,7 @@ const dbconnect = require("./config/db.connect");
 const cors = require("cors");
 const userRouter = require('./users/user.router.js')
 
-let PORT = 8080;
+let port = process.env.PORT ||  8080;
 
 
 const app = express();
@@ -23,7 +23,7 @@ app.use('/user' , userRouter)
 
 
 
-app.listen(PORT, async () => {
+app.listen(port, async () => {
   await dbconnect;
-  console.log(`Listening on http://localhost:${PORT}`);
+  console.log(`Listening on http://localhost:${port}`);
 });
